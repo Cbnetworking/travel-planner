@@ -28,7 +28,6 @@ const sampleData = {
   hotels: [
     { name: "Hyatt Regency Shinjuku", location: "Tokyo", checkIn: "Oct 12", checkOut: "Oct 15", nights: 3, pricePerNight: 180, rating: 4.5, amenities: ["Free WiFi", "Gym", "Restaurant", "Concierge"] },
     { name: "The Thousand Kyoto", location: "Kyoto", checkIn: "Oct 15", checkOut: "Oct 17", nights: 2, pricePerNight: 220, rating: 4.8, amenities: ["Free WiFi", "Onsen", "Japanese Garden", "Tea Ceremony"] },
-    { name: "Cross Hotel Osaka", location: "Osaka", checkIn: "Oct 17", checkOut: "Oct 25", nights: 8, pricePerNight: 130, rating: 4.2, amenities: ["Free WiFi", "Rooftop Bar", "Gym"] },
   ],
 };
 
