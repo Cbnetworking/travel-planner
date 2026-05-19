@@ -21,9 +21,8 @@ const sampleData = {
   ],
   travel: [
     { type: "flight", from: "Dallas (DFW)", to: "Portland (PWM)", date: "July 22", time: "11:57 a.m. → 4:44 p.m.", duration: "3h 47m", operator: "American Airlines AA# 2353" },
-    { type: "rental car", from: "Portland (PWM)", to: "", date: "July 22", time: "5 p.m. → ", duration: "5 days", operator: "Avis", },
-    { type: "flight", from: "Portland (PWM)", to: "Dallas (DFW)", date: "July 26", time: "5:36 p.m. → 9 p.m.", duration: "4h 24m", operator: "American Airlines AA# 2353", },
-  
+    { type: "rental car", from: "Portland (PWM)", to: "", date: "July 22", time: "5 p.m. → ", duration: "5 days", operator: "Avis" },
+    { type: "flight", from: "Portland (PWM)", to: "Dallas (DFW)", date: "July 26", time: "5:36 p.m. → 9 p.m.", duration: "4h 24m", operator: "American Airlines AA# 2353" },
   ],
   hotels: [
     { name: "Portland Harbor Hotel", location: "Portland", checkIn: "July 22", checkOut: "July 24", nights: 2, amenities: ["Free WiFi", "Gym", "Restaurant", "Concierge"] },
@@ -41,15 +40,6 @@ const defaultCosts = [
   { id: 7, category: "Activities", item: "Attractions & tours", amount: 300 },
   { id: 8, category: "Misc", item: "Shopping & misc", amount: 400 },
 ];
-
-function Stars({ rating }) {
-  return (
-    <span style={{ color: "#f59e0b", fontSize: 13 }}>
-      {"★".repeat(Math.floor(rating))}{"☆".repeat(5 - Math.floor(rating))}
-      <span style={{ color: "var(--color-text-secondary)", marginLeft: 4, fontSize: 12 }}>{rating}</span>
-    </span>
-  );
-}
 
 function ItineraryTab({ data }) {
   const [expanded, setExpanded] = useState(null);
@@ -96,7 +86,7 @@ function TravelTab({ data }) {
         {data.map((t, i) => (
           <div key={i} style={{ background: "var(--color-background-primary)", border: "0.5px solid var(--color-border-tertiary)", borderRadius: "var(--border-radius-lg)", padding: "1rem 1.25rem" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
-              <span style={{ fontSize: 18 }}>{t.type === "flight" ? "✈️" : "🚅"}</span>
+              <span style={{ fontSize: 18 }}>{t.type === "flight" ? "✈️" : "🚗"}</span>
               <span style={{ fontSize: 12, fontWeight: 500, background: t.type === "flight" ? "var(--color-background-info)" : "var(--color-background-success)", color: t.type === "flight" ? "var(--color-text-info)" : "var(--color-text-success)", padding: "2px 8px", borderRadius: "var(--border-radius-md)" }}>{t.type === "flight" ? "Flight" : "Rental car"}</span>
               <span style={{ fontSize: 13, color: "var(--color-text-secondary)", marginLeft: "auto" }}>{t.date}</span>
             </div>
@@ -116,9 +106,8 @@ function TravelTab({ data }) {
                 <p style={{ margin: 0, fontSize: 12, color: "var(--color-text-secondary)" }}>{t.time.split(" → ")[1]}</p>
               </div>
             </div>
-            <div style={{ marginTop: 10, paddingTop: 10, borderTop: "0.5px solid var(--color-border-tertiary)", display: "flex", gap: 16, fontSize: 12, color: "var(--color-text-secondary)" }}>
+            <div style={{ marginTop: 10, paddingTop: 10, borderTop: "0.5px solid var(--color-border-tertiary)", fontSize: 12, color: "var(--color-text-secondary)" }}>
               <span>{t.operator}</span>
-              <span>· {t.class}</span>
             </div>
           </div>
         ))}
@@ -134,10 +123,9 @@ function HotelsTab({ data }) {
       <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
         {data.map((h, i) => (
           <div key={i} style={{ background: "var(--color-background-primary)", border: "0.5px solid var(--color-border-tertiary)", borderRadius: "var(--border-radius-lg)", padding: "1rem 1.25rem" }}>
-            <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 8 }}>
-              <div>
-                <p style={{ margin: 0, fontWeight: 500, fontSize: 16 }}>{h.name}</p>
-                <p style={{ margin: 0, fontSize: 13, color: "var(--color-text-secondary)" }}>📍 {h.location}</p>
+            <div style={{ marginBottom: 8 }}>
+              <p style={{ margin: 0, fontWeight: 500, fontSize: 16 }}>{h.name}</p>
+              <p style={{ margin: 0, fontSize: 13, color: "var(--color-text-secondary)" }}>📍 {h.location}</p>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8, margin: "12px 0", padding: "10px 0", borderTop: "0.5px solid var(--color-border-tertiary)", borderBottom: "0.5px solid var(--color-border-tertiary)" }}>
               <div style={{ textAlign: "center" }}>
@@ -152,12 +140,12 @@ function HotelsTab({ data }) {
                 <p style={{ margin: 0, fontSize: 11, color: "var(--color-text-secondary)" }}>CHECK-OUT</p>
                 <p style={{ margin: 0, fontSize: 13, fontWeight: 500 }}>{h.checkOut}</p>
               </div>
+            </div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
               {h.amenities.map((a) => (
                 <span key={a} style={{ fontSize: 12, padding: "3px 8px", background: "var(--color-background-secondary)", borderRadius: "var(--border-radius-md)", color: "var(--color-text-secondary)" }}>{a}</span>
               ))}
             </div>
-            <p style={{ margin: "10px 0 0", fontSize: 13, color: "var(--color-text-secondary)" }}>Subtotal: <strong style={{ color: "var(--color-text-primary)" }}>${(h.nights * h.pricePerNight).toLocaleString()}</strong></p>
           </div>
         ))}
       </div>
@@ -173,7 +161,6 @@ function CostsTab() {
 
   const total = costs.reduce((s, c) => s + Number(c.amount), 0);
   const perPerson = total / people;
-
   const categories = [...new Set(costs.map((c) => c.category))];
 
   function addItem() {
@@ -190,7 +177,6 @@ function CostsTab() {
   return (
     <div>
       <h2 style={{ fontSize: 13, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--color-text-secondary)", marginBottom: "1.5rem" }}>Cost breakdown</h2>
-
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: 10, marginBottom: "1.5rem" }}>
         {[
           { label: "Total cost", value: `$${total.toLocaleString()}` },
@@ -203,13 +189,11 @@ function CostsTab() {
           </div>
         ))}
       </div>
-
       <div style={{ marginBottom: "1.5rem", display: "flex", alignItems: "center", gap: 12 }}>
         <label style={{ fontSize: 14, color: "var(--color-text-secondary)", whiteSpace: "nowrap" }}>Number of travellers:</label>
         <input type="range" min="1" max="12" value={people} step="1" onChange={(e) => setPeople(Number(e.target.value))} style={{ flex: 1 }} />
         <span style={{ fontSize: 16, fontWeight: 500, minWidth: 24 }}>{people}</span>
       </div>
-
       {categories.map((cat) => (
         <div key={cat} style={{ marginBottom: "1.25rem" }}>
           <p style={{ margin: "0 0 6px", fontSize: 12, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--color-text-secondary)" }}>{cat}</p>
@@ -224,7 +208,6 @@ function CostsTab() {
           </div>
         </div>
       ))}
-
       <div style={{ background: "var(--color-background-primary)", border: "0.5px solid var(--color-border-tertiary)", borderRadius: "var(--border-radius-lg)", padding: "1rem 1.25rem", marginTop: "1.5rem" }}>
         <p style={{ margin: "0 0 10px", fontSize: 13, fontWeight: 500 }}>Add expense</p>
         <div style={{ display: "grid", gridTemplateColumns: "120px 1fr 90px auto", gap: 8, alignItems: "center" }}>
