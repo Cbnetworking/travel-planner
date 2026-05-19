@@ -138,11 +138,6 @@ function HotelsTab({ data }) {
               <div>
                 <p style={{ margin: 0, fontWeight: 500, fontSize: 16 }}>{h.name}</p>
                 <p style={{ margin: 0, fontSize: 13, color: "var(--color-text-secondary)" }}>📍 {h.location}</p>
-              </div>
-              <div style={{ textAlign: "right" }}>
-                <p style={{ margin: 0, fontWeight: 500, fontSize: 16 }}>${h.pricePerNight}<span style={{ fontSize: 12, fontWeight: 400, color: "var(--color-text-secondary)" }}>/night</span></p>
-                <Stars rating={h.rating} />
-              </div>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8, margin: "12px 0", padding: "10px 0", borderTop: "0.5px solid var(--color-border-tertiary)", borderBottom: "0.5px solid var(--color-border-tertiary)" }}>
               <div style={{ textAlign: "center" }}>
