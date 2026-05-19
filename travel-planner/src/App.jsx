@@ -21,7 +21,7 @@ const sampleData = {
   ],
   travel: [
     { type: "flight", from: "Dallas (DFW)", to: "Portland (PWM)", date: "July 22", time: "11:57 a.m. → 4:44 p.m.", duration: "3h 47m", operator: "American Airlines AA# 2353", class: "Economy" },
-    { type: "rental  car", pickup: "Portland airport", date: "July 22", time: "5 p.m.", operator: "Avis", },
+    { type: "rental  car", pickup: "Portland airport", date: "July 22", time: "5 p.m.", operator: "Avis" },
     { type: "flight", from: "Portland (PWM)", to: "Dallas (DFW)", date: "July 26", time: "5:36 p.m. → 9 p.m.", duration: "4h 24m", operator: "American Airlines AA# 2353", class: "Economy" },
   ],
   hotels: [
