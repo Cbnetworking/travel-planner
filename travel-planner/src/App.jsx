@@ -26,8 +26,8 @@ const sampleData = {
   
   ],
   hotels: [
-    { name: "Hyatt Regency Shinjuku", location: "Tokyo", checkIn: "Oct 12", checkOut: "Oct 15", nights: 3, pricePerNight: 180, rating: 4.5, amenities: ["Free WiFi", "Gym", "Restaurant", "Concierge"] },
-    { name: "The Thousand Kyoto", location: "Kyoto", checkIn: "Oct 15", checkOut: "Oct 17", nights: 2, pricePerNight: 220, rating: 4.8, amenities: ["Free WiFi", "Onsen", "Japanese Garden", "Tea Ceremony"] },
+    { name: "Portland Harbor Hotel", location: "Portland", checkIn: "July 22", checkOut: "July 24", nights: 2, rating: 4.5, amenities: ["Free WiFi", "Gym", "Restaurant", "Concierge"] },
+    { name: "Gorges Grant Hotel", location: "Ogunquit", checkIn: "July 24", checkOut: "July 26", nights: 2, rating: 4.8, amenities: ["Free WiFi", "Onsen", "Japanese Garden", "Tea Ceremony"] },
   ],
 };
 
