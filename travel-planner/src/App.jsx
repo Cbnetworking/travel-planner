@@ -20,9 +20,9 @@ const sampleData = {
     { day: 5, date: "July 26", location: "Ogunquit/Kennebunkport/Portland", events: ["Arashiyama Bamboo Grove", "Kinkaku-ji Golden Pavilion", "Traditional kaiseki dinner"] },
   ],
   travel: [
-    { type: "flight", from: "Dallas (DFW)", to: "Portland (PWM)", date: "July 22", time: "11:57 a.m. → 4:44 p.m.", duration: "3h 47m", operator: "American Airlines AA# 2353", class: "Economy" },
+    { type: "flight", from: "Dallas (DFW)", to: "Portland (PWM)", date: "July 22", time: "11:57 a.m. → 4:44 p.m.", duration: "3h 47m", operator: "American Airlines AA 2353", class: "Economy" },
     { type: "rental  car", pickup: "Portland airport", date: "July 22", time: "5 p.m.", operator: "Avis" },
-    { type: "flight", from: "Portland (PWM)", to: "Dallas (DFW)", date: "July 26", time: "5:36 p.m. → 9 p.m.", duration: "4h 24m", operator: "American Airlines AA# 2353", class: "Economy" },
+    { type: "flight", from: "Portland (PWM)", to: "Dallas (DFW)", date: "July 26", time: "5:36 p.m. → 9 p.m.", duration: "4h 24m", operator: "American Airlines AA 2353", class: "Economy" },
   ],
   hotels: [
     { name: "Hyatt Regency Shinjuku", location: "Tokyo", checkIn: "Oct 12", checkOut: "Oct 15", nights: 3, pricePerNight: 180, rating: 4.5, amenities: ["Free WiFi", "Gym", "Restaurant", "Concierge"] },
