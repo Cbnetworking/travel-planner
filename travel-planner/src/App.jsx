@@ -13,7 +13,7 @@ const sampleData = {
   tripName: "Joji & Momi's Maine Adventure",
   dates: "July 22 - 26, 2026",
   itinerary: [
-    { day: 1, date: "July 22", location: "Portland", events: ["Arrive at Portland Airport", "Check in at Portland Harbor Hotel", "Dinner at Central Provisions", "Explore Portland at night"] },
+    { day: 1, date: "July 22", location: "Portland", events: ["5 p.m. - Arrive at Portland Airport", "6 p.m. - Check in at Portland Harbor Hotel", "7:30 p.m. - Dinner at Central Provisions", "Hunt & Alpine for nightcap"] },
     { day: 2, date: "July 23", location: "Portland", events: ["Senso-ji Temple, Asakusa", "Tsukiji Outer Market lunch", "TeamLab Planets evening"] },
     { day: 3, date: "July 24", location: "Portland/Ogunquit", events: ["Shibuya Crossing & shopping", "Harajuku & Meiji Shrine", "Dinner in Ginza"] },
     { day: 4, date: "July 25", location: "Ogunquit/Wells/Kennebunkport", events: ["Bullet train Tokyo → Kyoto", "Fushimi Inari Shrine", "Gion district stroll"] },
