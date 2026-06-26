@@ -29,13 +29,13 @@ const sampleData = {
     { name: "Gorges Grant Hotel", location: "Ogunquit", checkIn: "July 24", checkOut: "July 26", nights: 2, amenities: ["Free WiFi", "Onsen", "Japanese Garden", "Tea Ceremony"] },
   ],
   dining: [
-    { id: 1, name: "Central Provisions", location: "Portland", date: "July 22", meal: "Dinner", notes: "Small plates, reservations recommended", booked: true },
-    { id: 2, name: "Hunt & Alpine Club", location: "Portland", date: "July 22", meal: "Drinks", notes: "Cocktail bar, walk-ins usually fine", booked: true },
-    { id: 3, name: "Street & Co.", location: "Portland", date: "July 23", meal: "Dinner", notes: "Seafood pasta, very popular — book early", booked: false },
-    { id: 4, name: "Eventide Oyster Co.", location: "Portland", date: "July 23", meal: "Lunch", notes: "Best oysters in town", booked: false },
-    { id: 5, name: "Arrows Restaurant", location: "Ogunquit", date: "July 24", meal: "Dinner", notes: "Farm-to-table, upscale", booked: false },
-    { id: 6, name: "Pier 77 Restaurant", location: "Kennebunkport", date: "July 25", meal: "Lunch", notes: "Waterfront views, casual", booked: true },
-    { id: 7, name: "Earth at Hidden Pond", location: "Kennebunkport", date: "July 25", meal: "Dinner", notes: "Forest setting, seasonal menu", booked: false },
+    { id: 1, name: "Central Provisions", location: "Portland", date: "July 22", meal: "Dinner", notes: "Reservations bookable 2 weeks out via Resy", booked: false },
+    { id: 2, name: "Hunt & Alpine Club", location: "Portland", date: "July 22", meal: "Drinks", notes: "No rezy, going to risk it for a biscuit", booked: true },
+    { id: 3, name: "Eventide Oyster Co.", location: "Portland", date: "July 23", meal: "Lunch", notes: "Reservations bookable 2 weeks out via Resy", booked: false },
+    { id: 4, name: "Scales", location: "Portland", date: "July 23", meal: "Dinner", notes: "Birthday dinner, yay!", booked: true },
+    { id: 5, name: "SoPo Market", location: "Portland", date: "July 24", meal: "Lunch", notes: "Off the beaten path, on the way out of town - no rezy needed", booked: true },
+    { id: 6, name: "XX", location: "Ogunquit", date: "July 24", meal: "Dinner", notes: "XX", booked: false },
+    { id: 7, name: "M.C. Perkins Cove", location: "Ogunquit", date: "July 25", meal: "Dinner", notes: "Best waterfront views", booked: true },
   ],
 };
 
