@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const TABS = ["itinerary", "travel", "hotels", "dining"];
 
@@ -70,6 +70,139 @@ if (typeof document !== "undefined" && !document.getElementById(FONT_IMPORT_ID))
   link.href =
     "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap";
   document.head.appendChild(link);
+}
+
+// ---- Password protection ----
+const SITE_PASSCODE = "MJ2026";
+const AUTH_STORAGE_KEY = "trip-app-authed";
+
+function PasswordGate({ children }) {
+  const [authed, setAuthed] = useState(false);
+  const [checked, setChecked] = useState(false);
+  const [input, setInput] = useState("");
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    try {
+      if (window.localStorage.getItem(AUTH_STORAGE_KEY) === "true") {
+        setAuthed(true);
+      }
+    } catch (e) {
+      // localStorage unavailable, just show the gate
+    }
+    setChecked(true);
+  }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (input.trim() === SITE_PASSCODE) {
+      setAuthed(true);
+      setError(false);
+      try {
+        window.localStorage.setItem(AUTH_STORAGE_KEY, "true");
+      } catch (e) {
+        // ignore storage errors
+      }
+    } else {
+      setError(true);
+    }
+  };
+
+  if (!checked) return null;
+
+  if (!authed) {
+    return (
+      <div
+        style={{
+          minHeight: "100vh",
+          background: C.sand,
+          fontFamily: fontBody,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "1.5rem",
+        }}
+      >
+        <form
+          onSubmit={handleSubmit}
+          style={{
+            background: C.card,
+            border: `1px solid ${C.rope}`,
+            borderRadius: 20,
+            padding: "2.2rem 2rem",
+            maxWidth: 360,
+            width: "100%",
+            textAlign: "center",
+            boxShadow: "0 8px 30px rgba(14,77,100,0.1)",
+          }}
+        >
+          <div style={{ fontSize: 32, marginBottom: 6 }}>⛵</div>
+          <h1
+            style={{
+              margin: "0 0 6px",
+              fontFamily: fontDisplay,
+              fontWeight: 700,
+              fontSize: 22,
+              color: C.harbor,
+            }}
+          >
+            Maine Adventure
+          </h1>
+          <p style={{ margin: "0 0 22px", fontSize: 14, color: C.inkSoft }}>
+            Enter the passcode to view the trip
+          </p>
+          <input
+            type="password"
+            autoFocus
+            value={input}
+            onChange={(e) => {
+              setInput(e.target.value);
+              setError(false);
+            }}
+            placeholder="Passcode"
+            style={{
+              width: "100%",
+              boxSizing: "border-box",
+              padding: "11px 14px",
+              borderRadius: 12,
+              border: `1px solid ${error ? C.danger : C.ropeLine}`,
+              fontSize: 15,
+              fontFamily: fontMono,
+              outline: "none",
+              marginBottom: 12,
+              background: C.sand,
+              color: C.ink,
+            }}
+          />
+          {error && (
+            <p style={{ margin: "0 0 12px", fontSize: 13, color: C.danger }}>
+              Incorrect passcode, try again.
+            </p>
+          )}
+          <button
+            type="submit"
+            style={{
+              width: "100%",
+              padding: "11px 0",
+              borderRadius: 12,
+              border: "none",
+              background: C.harbor,
+              color: "#fff",
+              fontSize: 14,
+              fontWeight: 600,
+              fontFamily: fontBody,
+              cursor: "pointer",
+              letterSpacing: "0.02em",
+            }}
+          >
+            Unlock trip
+          </button>
+        </form>
+      </div>
+    );
+  }
+
+  return children;
 }
 
 function WaveDivider() {
@@ -421,7 +554,7 @@ function DiningTab({ initialData }) {
   );
 }
 
-export default function App() {
+function TripApp() {
   const [tab, setTab] = useState("itinerary");
 
   return (
@@ -483,5 +616,13 @@ export default function App() {
         {tab === "dining" && <DiningTab initialData={sampleData.dining} />}
       </main>
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <PasswordGate>
+      <TripApp />
+    </PasswordGate>
   );
 }
