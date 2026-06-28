@@ -10,7 +10,7 @@ const NAV_ICONS = {
 };
 
 const sampleData = {
-  tripName: "Joji & Momi's Maine Adventure",
+  tripName: "Maine Adventure",
   dates: "July 22 – 26, 2026",
   itinerary: [
     { day: 1, date: "July 22", location: "Portland", events: ["5 p.m. - Arrive and check in to hotel", "7:30ish p.m. - Dinner at Central Provisions", "Hunt & Alpine for nightcap"] },
@@ -573,7 +573,7 @@ function TripApp() {
                 color: C.coral,
               }}
             >
-              ⛵ Coastal getaway
+              ⛵ Joji & Momi's
             </p>
             <h1 style={{ margin: 0, fontFamily: fontDisplay, fontSize: 28, fontWeight: 700, color: "#fff" }}>
               {sampleData.tripName}
